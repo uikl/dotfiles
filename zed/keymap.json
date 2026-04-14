@@ -1,0 +1,107 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-b": "workspace::ToggleRightDock"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-b": "workspace::ToggleRightDock",
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "shift-w": "project_panel::CollapseAllEntries"
+    }
+  },
+  {
+    "context": "ImageViewer",
+    "bindings": {
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-b": "workspace::ToggleRightDock",
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-m": "workspace::ToggleZoom"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore",
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-g": "workspace::ToggleBottomDock",
+      "ctrl-b": "workspace::ToggleRightDock"
+    },
+  },
+  {
+    "bindings": {
+      "n": "editor::ToggleHunkDiff"
+    }
+  },
+  {
+    "context": "Editor && !agent_diff && !AgentPanel",
+    "bindings": {
+      "shift-n": "git::ToggleStaged"
+    }
+  },
+  {
+    "context": "Editor && !agent_diff && !AgentPanel",
+    "unbind": {
+      "alt-cmd-y": "git::ToggleStaged"
+    }
+  },
+  {
+    "context": "GitPanel && ChangesList && !GitBranchSelector",
+    "bindings": {
+      "shift-n": "git::ToggleStaged"
+    }
+  },
+  {
+    "context": "GitPanel && ChangesList && !GitBranchSelector",
+    "unbind": {
+      "alt-cmd-y": "git::ToggleStaged"
+    }
+  }
+]
