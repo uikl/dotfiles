@@ -1,0 +1,104 @@
+[
+  // Docks / panels
+  { "key": "ctrl+n", "command": "workbench.action.toggleSidebarVisibility" },
+  { "key": "ctrl+n", "command": "-workbench.action.files.newUntitledFile" },
+  { "key": "ctrl+g", "command": "workbench.action.togglePanel" },
+  { "key": "ctrl+g", "command": "-workbench.action.gotoLine" },
+  { "key": "ctrl+b", "command": "workbench.action.toggleAuxiliaryBar" },
+  { "key": "ctrl+b", "command": "-workbench.action.toggleSidebarVisibility" },
+
+  // Pane navigation — explicit per-context, so each hop is deterministic
+  // (navigate* / focus*Group skip the editor or wrap unpredictably).
+  //
+  // ctrl+h (left): aux bar → editor → side bar
+  { "key": "ctrl+h", "command": "workbench.action.focusSideBar", "when": "editorFocus" },
+  { "key": "ctrl+h", "command": "workbench.action.focusActiveEditorGroup", "when": "auxiliaryBarFocus" },
+  //
+  // ctrl+l (right): side bar → editor → aux bar
+  { "key": "ctrl+l", "command": "workbench.action.focusActiveEditorGroup", "when": "sideBarFocus" },
+  { "key": "ctrl+l", "command": "workbench.action.focusAuxiliaryBar", "when": "editorFocus" },
+  //
+  // ctrl+j (down): editor → panel
+  { "key": "ctrl+j", "command": "workbench.action.focusPanel", "when": "editorFocus" },
+  //
+  // ctrl+k (up): panel/terminal → editor
+  { "key": "ctrl+k", "command": "workbench.action.focusActiveEditorGroup", "when": "panelFocus || terminalFocus" },
+
+  // Same navigation from inside Claude Code's webview (where focus is in an iframe and the
+  // contexts above don't fire). Blur the Claude input first, then focus the editor / panel.
+  {
+    "key": "ctrl+h",
+    "command": "runCommands",
+    "args": { "commands": ["claude-vscode.blur", "workbench.action.focusActiveEditorGroup"] },
+    "when": "activeWebviewPanelId == 'claudeVSCodePanel' || (claude-vscode.sideBarActive && !sideBarFocus && !editorFocus && !panelFocus && !terminalFocus)"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "runCommands",
+    "args": { "commands": ["claude-vscode.blur", "workbench.action.focusActiveEditorGroup"] },
+    "when": "activeWebviewPanelId == 'claudeVSCodePanel' || (claude-vscode.sideBarActive && !sideBarFocus && !editorFocus && !panelFocus && !terminalFocus)"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "runCommands",
+    "args": { "commands": ["claude-vscode.blur", "workbench.action.focusPanel"] },
+    "when": "activeWebviewPanelId == 'claudeVSCodePanel' || (claude-vscode.sideBarActive && !sideBarFocus && !editorFocus && !panelFocus && !terminalFocus)"
+  },
+
+  // Tab switching in vim normal mode
+  {
+    "key": "tab",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+
+  // Git: stage/unstage
+  {
+    "key": "shift+n",
+    "command": "git.stage",
+    "when": "editorTextFocus && vim.mode == 'Normal' && scmProvider == 'git'"
+  },
+
+  // Terminal: zoom panel
+  {
+    "key": "ctrl+m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus"
+  },
+
+  // Explorer: collapse all folders
+  {
+    "key": "shift+w",
+    "command": "workbench.files.action.collapseExplorerFolders",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+
+  // Explorer: Enter opens the file instead of renaming it
+  {
+    "key": "enter",
+    "command": "list.select",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "enter",
+    "command": "-renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !inputFocus"
+  },
+
+  // Explorer: shift+r to rename, shift+d to delete
+  {
+    "key": "shift+r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  }
+]
