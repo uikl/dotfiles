@@ -1,0 +1,51 @@
+{
+  "vim.insertModeKeyBindings": [
+    { "before": ["j", "k"], "after": ["<Esc>"] }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    { "before": ["K"], "commands": ["editor.action.showHover"] },
+    { "before": ["g", "h"], "commands": ["editor.action.showHover"] }
+  ],
+  "editor.fontSize": 14,
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "relative",
+  "editor.lineNumbersMinChars": 2,
+  "editor.lineDecorationsWidth": 12,
+  "editor.glyphMargin": false,
+  "editor.folding": false,
+  "editor.scrollbar.vertical": "hidden",
+  "editor.overviewRulerBorder": false,
+  "editor.overviewRulerLanes": 0,
+  "workbench.colorTheme": "GitHub Dark (Web Based Borderless)",
+  "workbench.activityBar.location": "hidden",
+  "diffEditor.renderSideBySide": false,
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.toggleAuxiliaryBar",
+    "workbench.action.focusAuxiliaryBar",
+    "workbench.action.toggleSidebarVisibility",
+    "workbench.action.focusSideBar",
+    "runCommands"
+  ],
+  "workbench.layoutControl.enabled": false,
+  "window.commandCenter": false,
+  "window.titleBarStyle": "native",
+  "window.customTitleBarVisibility": "never",
+  "claudeCode.preferredLocation": "panel",
+  "workbench.statusBar.visible": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "scm.repositories.selectionMode": "single",
+  "scm.providerCountBadge": "auto",
+  "git.showActionButton": {
+    "commit": true,
+    "publish": false,
+    "sync": false
+  },
+  "problems.decorations.enabled": false,
+  "workbench.colorCustomizations": {
+    "gitDecoration.stageModifiedResourceForeground": "#22c55e",
+    "gitDecoration.stageDeletedResourceForeground": "#22c55e",
+    "gitDecoration.addedResourceForeground": "#22c55e",
+    "gitDecoration.untrackedResourceForeground": "#3b82f6"
+  }
+}
